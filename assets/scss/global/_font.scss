@@ -1,0 +1,30 @@
+/*!
+global > font
+------------------------------
+*/
+
+:root {
+	--font-family-gothic: YakuHanJPs, "Noto Sans JP", sans-serif;
+	--font-family-mincho: YakuHanMPs, "Noto Serif JP", serif;
+	--font-family-english: "Lato", sans-serif;
+	// --font-family-gothic: YakuHanJP, "Noto Sans JP", sans-serif;
+	// --font-family-english: "Lato", sans-serif;
+	/* 数字フォント */
+	--font-family-price-01: DIN Condensed;
+	--font-family-price-02: Futura PT;
+	// textsize
+	--font-size-xs: 0.75rem; /* 12px */
+	--font-size-sm: 0.875rem; /* 14px */
+	--font-size-default: 1rem; /* 16px */
+	--font-size-md: 1.125rem; /* 18px */
+	--font-size-lg: 1.375rem; /* 22px */
+	// caption
+	--font-size-cap-05: 1.5rem; /* 24px */
+	--font-size-cap-04: 1.75rem; /* 28px */
+	--font-size-cap-03: 2.25rem; /* 36px */
+	--font-size-cap-02: 3rem; /* 48px */
+	--font-size-cap-01: 3.75rem; /* 60px */
+	--font-size-cap-lg01: 4.5rem; /* 72px 5vw */
+	--font-size-cap-xl01: 6rem; /* 96px */
+	--font-size-cap-xl02: 8rem; /* 128px */
+}

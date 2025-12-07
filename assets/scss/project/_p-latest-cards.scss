@@ -1,0 +1,37 @@
+@use "../global" as g;
+
+/*!
+project > p-latest-cards
+------------------------------
+*/
+
+/*
+ピクセルからのフォントサイズ計算
+*/
+@use "sass:math";
+$baseFontSize: 16;
+
+@function rem($pixels) {
+  @return math.div($pixels, $baseFontSize) * 1rem;
+}
+// pxelsize => vw
+// font-size: vw(16, 1920);
+@function vw($pxelsize, $windowSize) {
+  @return math.div($pxelsize, $windowSize) * 100vw;
+}
+
+.p-latest-cards {
+  display: flex;
+  width: 100%;
+  align-items: stretch;
+  justify-content: center;
+  flex-wrap: wrap;
+
+  gap: var(--row-gap);
+
+  @include g.mq_max() {
+    // flex-direction: column;
+    // align-items: center;
+    gap: var(--gap-sp);
+  }
+}

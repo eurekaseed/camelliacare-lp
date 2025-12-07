@@ -1,0 +1,157 @@
+@use "../global" as g;
+
+/*!
+component > title
+------------------------------
+*/
+
+/*
+ピクセルからのフォントサイズ計算
+*/
+@use "sass:math";
+
+$baseFontSize: 16;
+
+@function rem($pixels) {
+  @return math.div($pixels, $baseFontSize) * 1rem;
+}
+// pxelsize => vw
+// font-size: vw(30, 1440);  30pxを1440pxベースのvwに変換
+@function vw($pxelsize, $windowSize) {
+  @return math.div($pxelsize, $windowSize) * 100vw;
+}
+
+///////
+///
+.wrap_ptitle {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0;
+}
+
+///
+///
+
+/*
+  FVコピー */
+
+%copy__FV {
+  display: inline;
+  background-color: #fff;
+  line-height: 1.7;
+  font-weight: 400;
+  color: var(--color-text-main);
+}
+
+.c-title_lv1 {
+  @extend %copy__FV;
+  letter-spacing: 8px;
+  font-size: var(--font-size-cap-01);
+
+  @include g.mq_max(sm) {
+    font-size: vw(60, 600);
+  }
+}
+
+%title_lv2 {
+  letter-spacing: 0.06em;
+  color: var(--color-text-main);
+  font-weight: 700;
+  font-size: 2rem;
+}
+
+.c-title_lv2 {
+  @extend %title_lv2;
+  color: var(--color-text-main);
+}
+.c-title_lv2__bg {
+  @extend %title_lv2;
+  color: var(--color-text-inBG, #fff);
+}
+
+.c-title_lv2__line {
+  @extend %title_lv2;
+  display: block;
+  width: 100%;
+  text-align: center;
+  color: var(--color-text-main);
+  padding: 1rem;
+  border-bottom: solid 1px var(--color-text-main);
+}
+
+.c-title__latest {
+  display: inline-block;
+  @extend %title_lv2;
+  color: var(--color-text-gray);
+  text-align: center;
+  padding: 2rem 5rem;
+  background-image: url(/assets/images/icon/new.svg);
+  background-repeat: no-repeat;
+  background-position: top left;
+  background-size: auto 100%;
+}
+
+.c-title__sort {
+  display: inline-block;
+  @extend %title_lv2;
+  color: var(--color-text-gray);
+  text-align: center;
+  padding: 2rem 5rem;
+  background-image: url(/assets/images/icon/search.svg);
+  background-repeat: no-repeat;
+  background-position: top left;
+  background-size: auto 100%;
+}
+
+.c-title__step {
+  display: inline-block;
+  @extend %title_lv2;
+  color: var(--color-text-gray);
+  text-align: center;
+  padding: 2rem 5rem;
+  background-image: url(/assets/images/icon/step.svg);
+  background-repeat: no-repeat;
+  background-position: top left;
+  background-size: auto 100%;
+}
+
+.c-title__voice {
+  display: inline-block;
+  @extend %title_lv2;
+  color: var(--color-text-gray);
+  text-align: center;
+  padding: 2rem 5rem;
+  background-image: url(/assets/images/icon/voice.svg);
+  background-repeat: no-repeat;
+  background-position: top left;
+  background-size: auto 100%;
+}
+
+.c-title_lv3 {
+  letter-spacing: 2px;
+  color: var(--color-main);
+  font-size: rem(24);
+}
+
+%subtitle {
+  color: var(--color-main);
+  font-size: max(var(--font-size-cap-lg01), 2rem);
+  letter-spacing: 2px;
+  // white-space: nowrap;
+}
+
+.subtitle {
+  @extend %subtitle;
+}
+
+.themeCopy {
+  font-weight: 400;
+  margin-bottom: 0.6rem;
+
+  @extend %subtitle;
+
+  @include g.mq(sm) {
+    margin-bottom: 1rem;
+  }
+}

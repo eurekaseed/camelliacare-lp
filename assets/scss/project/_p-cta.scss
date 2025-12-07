@@ -1,0 +1,49 @@
+@use "../global" as g;
+
+/*!
+project > p-cta
+------------------------------
+*/
+
+/*
+ピクセルからのフォントサイズ計算
+*/
+@use "sass:math";
+$baseFontSize: 16;
+
+@function rem($pixels) {
+  @return math.div($pixels, $baseFontSize) * 1rem;
+}
+// pxelsize => vw
+// font-size: vw(16, 1920);
+@function vw($pxelsize, $windowSize) {
+  @return math.div($pxelsize, $windowSize) * 100vw;
+}
+
+/*!
+p-cta-section
+------------------------------
+*/
+
+.p-cta-section {
+  text-align: center;
+  background: var(--base-grad-cta);
+  .flexClm {
+    position: relative;
+    display: flex;
+    align-items: center;
+    flex: 0 0 auto;
+    flex-direction: column;
+
+    gap: var(--gap);
+  }
+}
+
+.p-cta-section {
+  .btn {
+    width: 100%;
+    @include g.mq() {
+      width: 50%;
+    }
+  }
+}

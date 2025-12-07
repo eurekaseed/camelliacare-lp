@@ -1,0 +1,118 @@
+@use "../global" as g;
+
+/*!
+component > button_template
+------------------------------
+*/
+
+/*
+ピクセルからのフォントサイズ計算
+*/
+@use "sass:math";
+
+$baseFontSize: 16;
+
+@function rem($pixels) {
+  @return math.div($pixels, $baseFontSize) * 1rem;
+}
+// pxelsize => vw
+// font-size: vw(16, 1920);
+@function vw($pxelsize, $windowSize) {
+  @return math.div($pxelsize, $windowSize) * 100vw;
+}
+
+/*! ------------------
+---- ボタン シンプル02（色反転アニメ） --  */
+
+a.c-btn__simpleline02 {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  text-align: center;
+  text-decoration: none;
+  margin: auto;
+  padding: 1rem 5rem 1rem 4rem;
+  font-weight: bold;
+  border: solid 1px var(--color-main);
+  color: var(--color-main);
+  position: relative;
+  transition: 0.5s;
+  /* 矢印の先 */
+  &::before {
+    content: "";
+    position: absolute;
+    top: calc(50% - 2px);
+    right: 1rem;
+    transform: translateY(calc(-50% - 2px)) rotate(45deg);
+    width: 10px;
+    height: 1px;
+    background: var(--color-main);
+  }
+  /* 矢印横線 */
+  &::after {
+    content: "";
+    position: absolute;
+    top: 50%;
+    right: 1rem;
+    transform: translateY(-50%);
+    width: 50px;
+    height: 1px;
+    background: var(--color-main);
+  }
+  &:hover {
+    color: #fff;
+    background: var(--color-main);
+    &::before,
+    &::after {
+      background: #fff;
+    }
+  }
+}
+
+/*! ------------------
+---- ボタン シンプル03（矢印伸びるアニメ） --  */
+
+a.c-btn__simpleline03 {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  text-align: center;
+  text-decoration: none;
+  margin: auto;
+  padding: 1rem 5rem 1rem 4rem;
+  font-weight: bold;
+  border: solid 1px var(--color-main);
+  color: var(--color-main);
+  position: relative;
+  transition: 0.5s;
+  /* 矢印の先 */
+  &::before {
+    content: "";
+    position: absolute;
+    top: calc(50% - 2px);
+    right: 1rem;
+    transform: translateY(calc(-50% - 2px)) rotate(45deg);
+    width: 10px;
+    height: 1px;
+    background: var(--color-main);
+  }
+  /* 矢印横線 */
+  &::after {
+    content: "";
+    position: absolute;
+    top: 50%;
+    right: 1rem;
+    transform: translateY(-50%);
+    width: 50px;
+    height: 1px;
+    background: var(--color-main);
+  }
+  &:hover {
+    color: #fff;
+    background: var(--color-main);
+    &::before,
+    &::after {
+      background: #fff;
+    }
+  }
+}

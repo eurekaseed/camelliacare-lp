@@ -1,0 +1,37 @@
+@use "../global" as g;
+
+/*!
+layout > footer
+------------------------------
+*/
+
+/*
+ピクセルからのフォントサイズ計算
+*/
+@use "sass:math";
+$baseFontSize: 16;
+
+@function rem($pixels) {
+	@return math.div($pixels, $baseFontSize) * 1rem;
+}
+// pxelsize => vw
+// font-size: vw(16, 1920);
+@function vw($pxelsize, $windowSize) {
+	@return math.div($pxelsize, $windowSize) * 100vw;
+}
+
+.l-footer {
+	display: block;
+	padding-top: var(--min-gap);
+	padding-bottom: var(--min-gap);
+	text-align: center;
+	background: var(--color-footer-base);
+
+	.copyright {
+		letter-spacing: normal;
+		color: var(--color-text-default, #111827);
+		font-size: var(--font-size-default);
+		font-style: normal;
+		line-height: 150%;
+	}
+}

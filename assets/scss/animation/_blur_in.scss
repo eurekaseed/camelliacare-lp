@@ -1,0 +1,28 @@
+@use "../global" as g;
+
+/*!
+animation > blur_in
+ぼかしから出現／※背景は疑似要素で重ねること
+------------------------------
+*/
+
+.blur_in {
+	animation: blurInAnim 1s forwards;
+	// animation-name:blurAnim;
+	// animation-duration:1s;
+	// animation-fill-mode:forwards;
+}
+
+@keyframes blurInAnim {
+	from {
+		transform: scale(1.02);
+
+		filter: blur(10px);
+	}
+
+	to {
+		transform: scale(1);
+
+		filter: blur(0);
+	}
+}

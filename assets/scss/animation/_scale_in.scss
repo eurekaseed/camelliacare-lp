@@ -1,0 +1,29 @@
+@use "../global" as g;
+
+/*!
+animation > scale_in
+タイトルに.scale_in
+真ん中から拡大縮小
+------------------------------
+*/
+
+.scale_in {
+	animation: scaleInAnim 1s forwards;
+
+	// animation-fill-mode: forwards;
+}
+
+@keyframes scaleInAnim {
+	from {
+		transform: scaleX(0);
+		opacity: 0;
+	}
+	to {
+		transform: scaleX(100);
+		opacity: 1;
+	}
+}
+
+.scale_in.delay1 {
+	animation-delay: 0.2s;
+}

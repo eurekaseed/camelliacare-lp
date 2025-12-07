@@ -1,0 +1,100 @@
+@use "../global" as g;
+
+/*!
+component > c-job-card
+------------------------------
+*/
+
+/*
+ピクセルからのフォントサイズ計算
+*/
+@use "sass:math";
+$baseFontSize: 16;
+
+@function rem($pixels) {
+  @return math.div($pixels, $baseFontSize) * 1rem;
+}
+// pxelsize => vw
+// font-size: vw(30, 1440);  30pxを1440pxベースのvwに変換
+@function vw($pxelsize, $windowSize) {
+  @return math.div($pxelsize, $windowSize) * 100vw;
+}
+
+.c-job-card {
+  overflow: hidden;
+  width: 100%;
+  max-width: 500px;
+
+  transition: transform 0.2s;
+  background-color: var(--color-base-white);
+  border: 1px solid #ccc;
+  border-radius: var(--radius-card-md, 15px);
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+
+  &:hover {
+    transform: scale(1.05);
+  }
+
+  @include g.mq() {
+    width: calc((100% - (var(--row-gap) * 2)) / 3);
+    max-width: 300px;
+  }
+
+  img {
+    width: 100%;
+    height: auto;
+
+    aspect-ratio: 3 / 2;
+    object-fit: cover;
+  }
+
+  .card-body {
+    color: var(--color-text-gray);
+    padding: 10px;
+
+    .job-title {
+      // font-size: rem(20);
+      font-size: var(--font-size-md);
+      font-weight: bold;
+    }
+
+    .job-info {
+      /* オートレイアウト */
+      display: flex;
+      flex-direction: row;
+      align-items: center;
+      gap: 0.5rem;
+      dl {
+        display: flex;
+        dt {
+          position: relative;
+          &::after {
+            content: "/";
+            margin: 0 5px;
+          }
+        }
+      }
+    }
+  }
+}
+
+.wrap_tags {
+  display: flex;
+  gap: 0.5rem;
+  margin-top: 10px;
+  flex-wrap: wrap;
+
+  /* a.tag */
+  .tag {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    padding: 5px 16px;
+    font-weight: bold;
+    white-space: nowrap;
+    background-color: var(--color-btn-base);
+    color: var(--color-text-inBG);
+    border-radius: var(--radius-mini-tag);
+  }
+}

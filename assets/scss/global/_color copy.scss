@@ -1,0 +1,22 @@
+/*!
+global > color
+------------------------------
+*/
+:root {
+	--color-main: #ff8526;
+	--color-linktxt: #2d2d2d;
+
+// $color-key: var(--camellia-orange-50, #ff8526);
+	--color-pale-grey: #eff1f4;
+	--color-detail__hover: #6ea7df;
+
+//
+	--color-bg-gray: #d4dbed;
+	--color-bg-navigray: #e7f0f6;
+	--color-btn-base: #20868a;
+	$color-bg-button: #20868a;
+	--color-btn-base__hover: #37a7ab;
+	$color-bg-button__hover: #37a7ab;
+
+	// SP-navi-hover  --color-font-base: #5d5d5d;  --color-font-light: #ccc; // #989898;  --color-footer-bar: #3a6594;  --color-form-required: #f66709;  --color-form-error: red;
+}

@@ -1,0 +1,45 @@
+@use "../global" as g;
+
+/*!
+animation > btn_slide
+詳細ボタンのホバースライド
+------------------------------
+*/
+
+.c-btn__detail {
+  cursor: pointer;
+  transition: 0.2s cubic-bezier(0.45, 0, 0.55, 1);
+}
+
+// アニメーション前
+.c-btn__detail.slide {
+  position: relative;
+  z-index: 1;
+  overflow: hidden;
+  color: var(--color-main);
+  background: #fff;
+
+  // スライドイン
+  &::after {
+    position: absolute;
+    z-index: -1;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    content: "";
+    transition: 0.2s cubic-bezier(0.45, 0, 0.55, 1);
+    transform: scale(0, 1);
+    transform-origin: left top;
+    background: lighten(#002e5b, 10%);
+    // var(--color-main);
+  }
+
+  // ホバー時の文字
+  &:hover {
+    color: #fff;
+  }
+  &:hover::after {
+    transform: scale(1, 1);
+  }
+}

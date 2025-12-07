@@ -1,0 +1,74 @@
+@use "../global" as g;
+
+/*!
+layout > l-container
+コンテンツブロック、コンテナ
+------------------------------
+*/
+
+// l-innerは背景と一緒にしない
+.l-inner__FV,
+.l-inner {
+  width: 97%;
+  max-width: var(--content-width, 1140px);
+  margin: 0 auto;
+  padding: var(--contents-gap) 0;
+
+  @include g.mq_max(sm) {
+    width: 97%;
+    padding: var(--contents-gap) 2vw;
+  }
+  @include g.mq_max(lg) {
+    padding: var(--contents-gap) 20px;
+  }
+}
+
+.l-inner {
+  // FV以外の子コンテンツの下にマージン（最後除く）
+  > *:not(:last-child) {
+    margin-bottom: var(--gap);
+  }
+}
+
+.scrollbar_hidden {
+  overflow: hidden;
+}
+
+// カラムコンテンツ
+
+// .l-body__oneClm,
+// .l-body__twoClm {
+//   padding-top: var(--contents-gap-lg);
+//   padding-bottom: var(--contents-gap-lg);
+//   gap: var(--contents-gap);
+// }
+
+// タテブロック
+.l-clm {
+  position: relative;
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+}
+
+// センタリング
+.l-clm__center {
+  position: relative;
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+}
+
+.l-clm__left {
+  position: relative;
+  display: flex;
+  align-items: flex-start;
+  flex-direction: column;
+}
+
+.l-clm__right {
+  position: relative;
+  display: flex;
+  align-items: flex-end;
+  flex-direction: column;
+}

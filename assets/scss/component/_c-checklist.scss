@@ -1,0 +1,34 @@
+@use "../global" as g;
+
+/*!
+component > c-checklist
+------------------------------
+*/
+
+/*
+ピクセルからのフォントサイズ計算
+*/
+@use "sass:math";
+$baseFontSize: 16;
+
+@function rem($pixels) {
+	@return math.div($pixels, $baseFontSize) * 1rem;
+}
+// pxelsize => vw
+// font-size: vw(16, 1920);
+@function vw($pxelsize, $windowSize) {
+	@return math.div($pxelsize, $windowSize) * 100vw;
+}
+
+.c-checklist li {
+	display: flex;
+	align-items: flex-start;
+	justify-content: flex-start;
+	margin-bottom: 1.5rem;
+	letter-spacing: 0.06em;
+	color: var(--color-text-gray, #6b7280);
+	font-size: rem(32);
+	font-weight: 700;
+
+	gap: 10px;
+}

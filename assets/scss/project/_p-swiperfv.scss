@@ -1,0 +1,84 @@
+@use "../global" as g;
+
+/*!
+project > p-swiperfv
+------------------------------
+背景スライダーのファーストビュー
+*/
+
+/*
+ピクセルからのフォントサイズ計算
+*/
+@use "sass:math";
+
+$baseFontSize: 16;
+
+@function rem($pixels) {
+  @return math.div($pixels, $baseFontSize) * 1rem;
+}
+// pxelsize => vw
+// font-size: vw(16, 1920);
+@function vw($pxelsize, $windowSize) {
+  @return math.div($pxelsize, $windowSize) * 100vw;
+}
+
+.swiper-wrapper {
+  .slide1 {
+    background-image: url("/assets/images/bg_fv01@2x.png");
+  }
+  .slide2 {
+    background-image: url("/assets/images/bg_fv02@2x.png");
+  }
+  .slide3 {
+    background-image: url("/assets/images/bg_fv03@2x.png");
+  }
+}
+
+// .swiper-slide,
+.swiper-wrapper .slide1,
+.swiper-wrapper .slide2,
+.swiper-wrapper .slide3 {
+  background-position: top right;
+  background-size: cover; //auto 100hv;
+  background-repeat: no-repeat;
+  height: 100vh; /* スライドの高さを調整 */
+  overflow: hidden;
+  backface-visibility: hidden; //裏面を見せないackground-size: auto 100hv;
+  @include g.mq_max() {
+    background-position: top center;
+  }
+}
+
+.fv-contents {
+  width: 100%;
+  height: 100vh;
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: 10; /* 背景スライダーの前面に表示する */
+
+  .l-inner,
+  .l-right_side_overinner,
+  .wrap_catchcopy__FV {
+    z-index: 1;
+  }
+}
+
+.fv-contents {
+  .wrap_catchcopy__FV {
+    margin-top: 80px;
+    padding-top: clamp(100px, 13vw, 100px);
+    padding-bottom: rem(24);
+    height: 100%;
+  }
+
+  .subcopy__FV {
+    display: inline;
+    background-color: #fff;
+    font-size: var(--font-size-cap-05);
+    padding: rem(13);
+    font-weight: 500;
+    letter-spacing: 0.21em;
+    margin-top: 30px;
+  }
+}

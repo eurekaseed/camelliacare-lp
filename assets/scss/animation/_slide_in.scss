@@ -1,0 +1,51 @@
+@use "../global" as g;
+
+/*!
+animation > slide_in
+紙芝居式で右に徐々に見せる：.slide_in
+------------------------------
+*/
+
+.wrapSlideIn {
+	overflow: hidden;
+	transition: transform cubic-bezier(0.215, 0.61, 0.355, 1) 0.5s;
+	transform: translate(-100%, 0);
+}
+
+.wrapSlideIn .c-title_lv1 {
+	display: block;
+	transition: transform cubic-bezier(0.215, 0.61, 0.355, 1) 0.5s;
+	transform: translate(100%, 0);
+}
+
+.wrapSlideIn.-visible, .wrapSlideIn.-visible .c-title_lv1 {
+	transform: translate(0, 0);
+}
+
+.slideIn2 {
+	overflow: hidden;
+	transition: transform cubic-bezier(0.215, 0.61, 0.355, 1) 0.5s;
+	transform: translate(-100%, 0);
+	text-align: center;
+	font-family: "Yu Gothic Medium";
+	font-size: 16px;
+}
+
+.slideIn2 span {
+	display: block;
+	transition: transform cubic-bezier(0.215, 0.61, 0.355, 1) 0.5s;
+	transform: translate(100%, 0);
+}
+
+.slideIn2.-visible, .slideIn2.-visible span {
+	transform: translate(0, 0);
+}
+
+/****** Base style. ******/
+div.sample {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	height: 100vh;
+	margin: 0;
+}

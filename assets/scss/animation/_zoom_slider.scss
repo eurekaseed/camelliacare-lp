@@ -1,0 +1,38 @@
+@use "../global" as g;
+
+/*!
+animation > zoom_slider
+------------------------------
+*/
+$breakpoint-sp: 880; //SPブレイクポイント
+
+/*  .c-slider
+--------------------------------------------- */
+.c-slider {
+  margin-top: 50px;
+
+  .swiper-wrapper {
+    perspective: 1px;
+  }
+
+  //Slide
+  .swiper-slide {
+    @media screen and (min-width: #{$breakpoint-sp + 1}px) {
+      //PC時のみ
+      transform: scale(0.8);
+
+      &.swiper-slide-active,
+      &.swiper-slide-duplicate-active {
+        transform: scale(1);
+      }
+
+      &.is-add-transition {
+        transition: transform 0.5s;
+      }
+    }
+
+    img {
+      width: 100%;
+    }
+  }
+}

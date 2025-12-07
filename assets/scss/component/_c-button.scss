@@ -1,0 +1,257 @@
+@use "../global" as g;
+
+/*!
+component > button
+------------------------------
+*/
+
+/*
+ピクセルからのフォントサイズ計算
+*/
+@use "sass:math";
+
+$baseFontSize: 16;
+
+@function rem($pixels) {
+  @return math.div($pixels, $baseFontSize) * 1rem;
+}
+// pxelsize => vw
+// font-size: vw(16, 1920);
+@function vw($pxelsize, $windowSize) {
+  @return math.div($pxelsize, $windowSize) * 100vw;
+}
+
+/*
+ベースパーツ */
+%btnBase {
+  border-radius: var(--radius-btn-round, 50px);
+  z-index: auto;
+  display: block;
+  justify-content: center;
+  align-items: center;
+  margin-inline: auto;
+  box-sizing: border-box;
+  cursor: pointer;
+  pointer-events: auto;
+  transition: all 0.3s;
+  /* btn/txt-in-btn */
+  font-family: var(--font-family-gothic, "Noto Sans JP");
+  font-style: normal;
+  font-weight: var(--font-weight-bold, 700);
+  text-align: center;
+  text-decoration: none;
+  white-space: nowrap;
+}
+
+%btnColor {
+  background: var(--color-btn-base, #ff8526);
+  border: 3px solid var(--color-btn-base, #ff8526);
+  color: var(--color-text-inBG, #fff);
+  box-shadow: 2px 4px 0 0 var(--color-btn-shadow, #ffb67d);
+
+  &:hover {
+    background: var(--color-text-inBG, #fff);
+    color: var(--color-btn-base, #ff8526);
+    border-color: var(--color-btn-base, #ff8526);
+  }
+}
+
+%btnColor__inBG {
+  background: var(--color-text-inBG, #fff);
+  border: 3px solid var(--color-text-inBG, #fff);
+  color: var(--color-btn-base, #ff8526);
+  box-shadow: 2px 4px 0 0 var(--color-btn-shadow__inBG, #e06c00);
+
+  &:hover {
+    $base-color: var(--color-btn-base, #ff8526);
+    background: lighten($color: #ff8526, $amount: 10);
+    // background: var(--color-btn-shadow);
+
+    color: var(--color-text-inBG, #fff);
+    // border-color: var(--color-text-inBG, #fff);
+  }
+}
+
+%btn-size__small {
+  padding: 8px 40px;
+  margin: 0.5rem 2rem 0.5rem 0;
+  max-width: 250px;
+  font-size: rem(18);
+  letter-spacing: 1.1px;
+  white-space: nowrap;
+}
+
+%btn-size__default {
+  padding: 16px 60px;
+  margin: 0.5rem 2rem 0.5rem 0;
+  max-width: 300px;
+  font-size: rem(22);
+  letter-spacing: 1.1px;
+  white-space: nowrap;
+}
+
+.c-btn__header a {
+  @extend %btnBase;
+  @extend %btnColor;
+
+  /* Layout header-CTA */
+  @extend %btn-size__small;
+}
+
+.c-btn__CTA a {
+  @extend %btnBase;
+  @extend %btnColor__inBG;
+
+  /* Layout CTA-section-btn */
+  @extend %btn-size__default;
+}
+
+%p-btn-base {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 6px;
+}
+
+%c-shoudler-base {
+  position: relative;
+  white-space: nowrap;
+  font-weight: 700;
+  font-size: rem(22);
+  letter-spacing: 0.05em;
+}
+
+.p-btn {
+  @extend %p-btn-base;
+
+  .c-shoudler {
+    @extend %c-shoudler-base;
+    color: var(--color-btn-base);
+
+    &::before {
+      content: "";
+      position: absolute;
+      width: 36px;
+      height: 36px;
+      left: -48px;
+      top: 50%;
+      transform: translateY(-50%);
+      background-image: url(/assets/images/shoulder-line01.svg);
+      background-repeat: no-repeat;
+      background-position: center;
+    }
+
+    &::after {
+      content: "";
+      position: absolute;
+      width: 36px;
+      height: 36px;
+      right: -48px;
+      top: 50%;
+      transform: translateY(-50%);
+      background-image: url(/assets/images/shoulder-line02.svg);
+      background-repeat: no-repeat;
+      background-position: center;
+    }
+  }
+}
+
+.p-btn__CTA {
+  @extend %p-btn-base;
+
+  .c-shoudler {
+    @extend %c-shoudler-base;
+    color: var(--color-text-inBG, #fff);
+
+    &::before {
+      content: "";
+      position: absolute;
+      width: 22px;
+      height: 36px;
+      left: -30px;
+      top: 50%;
+      transform: translateY(-50%);
+      background-image: url(/assets/images/shoulder-line01w.svg);
+      background-repeat: no-repeat;
+      background-position: center;
+    }
+
+    &::after {
+      content: "";
+      position: absolute;
+      width: 22px;
+      height: 36px;
+      right: -24px;
+      top: 50%;
+      transform: translateY(-50%);
+      background-image: url(/assets/images/shoulder-line02w.svg);
+      background-repeat: no-repeat;
+      background-position: center;
+    }
+  }
+}
+
+/*
+内部パーツ */
+
+%btn__afterBase {
+  content: "";
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  margin: auto;
+}
+
+// 右矢印バージョン
+%c-btn_arrow {
+  width: 5px;
+  height: 10px;
+  right: 50px;
+  background-image: url(/assets/images/icon_caret_right.svg);
+  background-position: center;
+}
+%c-btn_arrow__detail {
+  width: 4px;
+  height: 8x;
+  right: 75px;
+  background-image: url(/assets/images/Icon_detail_arrow_right.svg);
+  background-position: center;
+}
+
+// .c-btn__pdf {
+//   @extend %btnBase;
+//   @extend %btnColor;
+//   padding: 1rem 1.2rem;
+//   width: 90%;
+//   font-size: clamp(1.1rem, 2.6vw, 1.3rem);
+//   margin: 2rem auto 0 auto;
+//   // z-index: 0;
+//   opacity: 1;
+
+//   &::after {
+//     content: " -- ";
+//     position: absolute;
+//     top: 0;
+//     bottom: 0;
+//     margin: auto;
+//   }
+
+//   @media screen and (min-width: 340px) {
+//     // width: clamp(100px, 70%, 90vw);
+//     width: clamp(100px, 90vw, 420px);
+//   }
+
+//   @include g.mq(md) {
+//     width: clamp(100px, 45%, 90vw);
+//   }
+// }
+
+@include g.mq_max(md) {
+  .c-btn {
+    display: block;
+  }
+
+  .c-btn + .c-btn {
+    margin-bottom: 2rem;
+  }
+}

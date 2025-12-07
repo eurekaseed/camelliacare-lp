@@ -1,0 +1,51 @@
+@use "../global" as g;
+
+/*!
+animation > scroll_slide_in
+#intro01 と #intro02 要素が特定のスクロール位置に達したときに、それぞれ右からと左から入ってくるアニメーション
+------------------------------
+*/
+
+@keyframes slideInFromRight {
+	0% {
+		transform: translateX(100%);
+		opacity: 0;
+	}
+	100% {
+		transform: translateX(0);
+		opacity: 1;
+	}
+}
+
+@keyframes slideInFromLeft {
+	0% {
+		transform: translateX(-100%);
+		opacity: 0;
+	}
+	100% {
+		transform: translateX(0);
+		opacity: 1;
+	}
+}
+
+.scroll-animation {
+	transition: opacity 0.5s ease-out;
+	opacity: 0;
+}
+
+.scroll-animation.right {
+	animation: slideInFromRight 0.75s ease-out forwards;
+}
+
+.scroll-animation.left {
+	animation: slideInFromLeft 0.75s ease-out forwards;
+}
+
+/* アニメーションの遅延を設定 */
+#intro01.scroll-animation {
+	animation-delay: 1s;
+}
+
+#intro02.scroll-animation {
+	animation-delay: 2s;
+}

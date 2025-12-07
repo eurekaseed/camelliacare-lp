@@ -1,0 +1,14 @@
+/*!
+global > z-index
+------------------------------
+*/
+:root {
+	--z-index-modal: 100;
+	--z-index-header: 9999; // 効かない
+	$z_index_header: 9999; // エラー
+	--z-index-main: -1; //-1
+	--z-index-menu: 10;
+	--z-index-btnBase: 10000;
+	--z-index-default: 1;
+	--z-index-slider: 2;
+}

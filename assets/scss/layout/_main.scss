@@ -1,0 +1,206 @@
+@use "../global" as g;
+
+/*!
+layout > main
+------------------------------
+
+*/
+
+main {
+  position: relative;
+  z-index: auto;
+  // z-index: -1;
+}
+
+/*
+  セクション背景 */
+
+.bg_Rtop {
+  // overflow: auto;
+  width: 100%;
+  background-image: url(/assets/images/bg_Rtop.svg);
+  background-repeat: no-repeat;
+  background-position: top right;
+  background-size: auto;
+}
+
+.bg_leafblob {
+  // overflow: auto;
+  width: 100%;
+  background-image: url(/assets/images/bg_leafblob.svg);
+  background-repeat: no-repeat;
+  background-position: top left;
+  background-size: auto;
+}
+
+.bg_L_flower {
+  // overflow: auto;
+  width: 100%;
+  background-image: url(/assets/images/bg_L_flower.svg);
+  background-repeat: no-repeat;
+  background-position: top left;
+  background-size: auto;
+}
+
+.bg_R_blob {
+  // overflow: auto;
+  width: 100%;
+  background-image: url(/assets/images/bg_R_blob.svg);
+  background-repeat: no-repeat;
+  background-position: top right;
+  background-size: auto;
+}
+
+.bg_L_bottom {
+  // overflow: auto;
+  width: 100%;
+  background-image: url(/assets/images/bg_L_bottom.svg);
+  background-repeat: no-repeat;
+  background-position: top left;
+  background-size: auto;
+}
+
+.copy3 {
+  font-size: 1.2rem;
+  line-height: 1.5;
+}
+
+// .centeringBox {
+//   @include g.mq(md) {
+//     text-align: center;
+//     margin-left: auto;
+//     margin-right: auto;
+//   }
+// }
+
+.centering {
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+}
+
+.section {
+  padding-bottom: var(--contents-gap);
+}
+
+// wrap：中コンテンツ間の上下間隔あり
+.clm-gap {
+  display: flex;
+  flex-direction: column;
+  gap: var(--contents-gap);
+}
+.clm-gap__inner {
+  display: flex;
+  flex-direction: column;
+  gap: var(--gap);
+}
+
+// ボタンとの間など
+.min-gap {
+  margin-bottom: var(--min-gap);
+}
+
+.top-gap {
+  padding-top: var(--gap);
+}
+
+.bottom-gap {
+  padding-bottom: var(--gap);
+}
+
+// ボタン横並びのラップブロックなど
+.row_btn__center {
+  width: 100%;
+  display: inline-flex;
+  justify-content: center;
+  flex-direction: column;
+  align-items: center;
+  gap: 1.3vw;
+  @include g.mq(md) {
+    flex-direction: row;
+    align-items: flex-start;
+  }
+}
+
+// 横並びカラム
+%rowClm {
+  width: 100%;
+  display: inline-flex;
+  justify-content: center;
+  flex-direction: column;
+  // align-items: center;
+  gap: 5vw;
+}
+.row_clm {
+  @extend %rowClm;
+  @include g.mq() {
+    flex-direction: row;
+    align-items: flex-start;
+  }
+}
+
+// 左右逆レイアウト
+.row_rev_clm {
+  @extend %rowClm;
+  @include g.mq() {
+    flex-direction: row-reverse;
+    align-items: flex-start;
+  }
+}
+
+.row_rev_clm,
+.row_clm {
+  .width_60p,
+  .txtbox {
+    width: 100%;
+    @include g.mq() {
+      width: 60%;
+    }
+  }
+}
+
+.width_40p {
+  width: 100%;
+  @include g.mq() {
+    width: 40%;
+  }
+}
+
+.flex1 {
+  width: 100%;
+  @include g.mq() {
+    flex: 1;
+  }
+}
+
+.txtbox > *:not(:last-child) {
+  margin-bottom: var(--min-gap);
+}
+
+/*!
+p-intro-section
+------------------------------
+*/
+
+.p-intro-section {
+  #intro01 img {
+    width: 100%;
+    max-width: 500px;
+    @include g.mq() {
+      width: 293px;
+    }
+  }
+
+  #intro02 img {
+    width: 100%;
+    max-width: 500px;
+    @include g.mq() {
+      width: 388px;
+    }
+  }
+  @include g.mq_max() {
+    .imgbox {
+      text-align: center;
+    }
+  }
+}

@@ -1,0 +1,81 @@
+@use "../global" as g;
+
+/*!
+component > c-voice-card
+------------------------------
+実際の登録者の声(voice) カード単体
+*/
+
+/*
+ピクセルからのフォントサイズ計算
+*/
+@use "sass:math";
+$baseFontSize: 16;
+
+@function rem($pixels) {
+  @return math.div($pixels, $baseFontSize) * 1rem;
+}
+// pxelsize => vw
+// font-size: vw(30, 1440);  30pxを1440pxベースのvwに変換
+@function vw($pxelsize, $windowSize) {
+  @return math.div($pxelsize, $windowSize) * 100vw;
+}
+
+.c-voice-card {
+  overflow: hidden;
+  width: 100%;
+  max-width: 600px;
+  transition: transform 0.2s;
+  background-color: var(--color-base-white);
+  padding: 0;
+  line-height: 0;
+
+  @include g.mq() {
+    width: calc((100% - (var(--row-gap) * 2)) / 3);
+  }
+  &:hover {
+    transform: scale(1.05);
+  }
+
+  img {
+    width: 100%;
+    height: auto;
+    border-radius: 0 var(--radius-card-xl, 40px);
+  }
+
+  .card-body {
+    display: flex;
+    align-items: flex-start;
+    /* 左寄せ */
+    line-height: 0;
+    flex-direction: column;
+    line-height: 150%;
+    gap: 10px;
+
+    & > * {
+      width: 100%;
+    }
+
+    .voice-name {
+      // font-size: rem(20);
+      font-size: var(--font-size-md);
+      font-weight: bold;
+
+      color: var(--color-btn-txt, #fff);
+      text-align: right;
+
+      display: flex;
+      flex-grow: 1;
+      padding: 8px var(--spacing-min-gap, 18px);
+      justify-content: flex-end;
+      align-items: flex-start;
+      border-radius: var(--radius-card-xl, 40px) 0px var(--radius-card-md, 15px)
+        0px;
+      background: var(--color-btn-base, #ff8526);
+    }
+
+    .voice-txt {
+      color: var(--color-text-gray);
+    }
+  }
+}

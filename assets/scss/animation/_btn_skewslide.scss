@@ -1,0 +1,69 @@
+@use "../global" as g;
+
+/*!
+animation > btn_skewslide
+詳細ボタンのホバー：ナナメスライド
+------------------------------
+*/
+
+.c-btn__detail {
+	cursor: pointer;
+	transition: 0.2s cubic-bezier(0.45, 0, 0.55, 1); // イージング調整
+}
+
+// アニメーション前
+.c-btn__detail.slide {
+	position: relative;
+	z-index: 1;
+	overflow: hidden;
+	color: var(--color-main);
+	background: #fff;
+
+	// スライドイン
+	&::after {
+		position: absolute;
+		z-index: -1;
+		top: 0;
+		left: 0;
+		width: 100%;
+		height: 100%;
+		content: "";
+		transition: 0.2s cubic-bezier(0.45, 0, 0.55, 1);
+		transform: scale(0, 1);
+		transform-origin: left top;
+		background: var(--color-main);
+
+		// lighten(#002e5b, 40%);
+		// var(--color-detail__hover);
+		// var(--color-main);
+	}
+
+	// ホバー時の色指定
+	&:hover {
+		color: #fff;
+	}
+	// &:hover::after {
+	//   transform: scale(1, 1);
+	// }
+}
+
+// ナナメスライド追加
+.c-btn__detail.slide.skew {
+	&::after {
+		height: 140px; // 140px:ボタンの高さによって調整
+		transform: skewY(-10deg) scale(1, 0);
+	}
+
+	// 白arrow
+	&:hover::before {
+		z-index: 1000;
+		right: 65px;
+		transition: all 0.2s;
+		background-image: url(/assets/images/icon_detail_arrow_right_white.svg);
+	}
+
+	&:hover::after {
+		// right: 65px;
+		transform: skewY(-10deg) scale(1, 1);
+	}
+}

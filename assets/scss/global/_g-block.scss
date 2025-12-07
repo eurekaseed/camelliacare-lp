@@ -1,0 +1,28 @@
+/*!
+global > g-block
+　コンテンツブロック共通の変数
+------------------------------
+*/
+
+/* block */
+:root {
+	--block-padding: 6rem; /* 72px */
+	--block-padding-s: 1rem; /* 16px */
+	--min-gap: 1.2rem; /* 18px */
+	--gap: 3vw; /* 36px */
+	--gap-sp: 3rem; /* 36px */
+	--contents-gap: max(7vw, 3rem); /* 48px：3rem以上の7％幅 */
+	--contents-gap-lg: 11vw; /* 132px */
+	--row-gap: 2rem;
+}
+
+/* radius */
+:root {
+	--radius-box-xs: 4px;
+	--radius-box-sm: 8px;
+	--radius-mini-tag: 10px;
+	--radius-card-md: 15px;
+	--radius-card-xl: 40px;
+	--radius-btn-round: 50px;
+	--radius-circle: 100px;
+}

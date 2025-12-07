@@ -1,0 +1,138 @@
+@use "../global" as g;
+
+/*!
+utility > utility
+------------------------------
+*/
+// sp.pc表示
+
+.u-spOnly {
+  @include g.mq() {
+    display: none !important;
+  }
+}
+
+.u-pcOnly {
+  display: none !important;
+
+  @include g.mq() {
+    display: block !important;
+  }
+}
+
+// <wbr />で改行のタイミング
+.break_keep {
+  word-break: keep-all;
+  overflow-wrap: break-word;
+}
+
+// すべてのリンクの電話番号対応
+@media (min-width: 768px) {
+  a[href^="tel:"] {
+    pointer-events: none;
+  }
+}
+
+// 隠しテキスト
+.u-visually-hidden {
+  position: absolute !important;
+  white-space: nowrap !important;
+  width: 1px !important;
+  height: 1px !important;
+  overflow: hidden !important;
+  border: 0 !important;
+  padding: 0 !important;
+  clip: rect(0 0 0 0) !important;
+  clip-path: inset(50%) !important;
+  margin: -1px !important;
+}
+
+// (md):800以下のみblock表示
+.MDonly {
+  display: block;
+
+  @include g.mq(md) {
+    display: none;
+  }
+}
+
+// 左寄せテキスト
+.txt_left {
+  text-align: left;
+}
+.txt_right {
+  text-align: right;
+}
+.txt_center {
+  text-align: center;
+}
+
+// 簡易な横並び
+.row {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+// 簡易なタテ並び
+.col {
+  display: flex;
+  flex-direction: column;
+}
+
+// 箇条書きリスト、数字リスト
+.lists,
+.numberlists {
+  list-style-position: outside;
+  margin-left: 1.2rem;
+  li {
+    margin-bottom: 0.8rem;
+  }
+}
+
+.lists {
+  li {
+    list-style: disc;
+  }
+}
+.numberlists {
+  li {
+    list-style: decimal;
+    ol {
+      padding: 0 2rem;
+      margin: 1.2rem 0;
+      border-left: solid 4px var(--color-bg-navigray);
+      li {
+        list-style-type: lower-latin;
+
+        ol {
+          padding: 0 2rem;
+          margin: 1.2rem 0;
+          border-left: solid 3px var(--color-bg-navigray);
+          li {
+            list-style: lower-roman;
+          }
+        }
+      }
+    }
+  }
+}
+
+// dlで・付き箇条書きリスト化
+dl.lists {
+  dt {
+    font-weight: bold;
+
+    &::before {
+      content: "・";
+    }
+  }
+  dd {
+    margin-bottom: var(--min-gap);
+  }
+}
+
+.u-mb40 {
+  margin-bottom: 40px;
+}

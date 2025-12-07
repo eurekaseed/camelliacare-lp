@@ -1,0 +1,106 @@
+@use "../global" as g;
+
+/*!
+component > c-stepBox
+------------------------------
+お仕事開始までの流れ
+*/
+
+/*
+ピクセルからのフォントサイズ計算
+*/
+@use "sass:math";
+$baseFontSize: 16;
+
+@function rem($pixels) {
+  @return math.div($pixels, $baseFontSize) * 1rem;
+}
+// pxelsize => vw
+// font-size: vw(16, 1920);
+@function vw($pxelsize, $windowSize) {
+  @return math.div($pxelsize, $windowSize) * 100vw;
+}
+
+//////
+///
+.c-stepBox {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: center;
+  width: 95%;
+  @include g.mq(lg) {
+    width: 100%;
+  }
+  max-width: var(--content-width-s, 920px);
+  padding: 50px;
+  border: 1px solid var(--color-text-gray, #6b7280);
+  border-radius: var(--radius-box-sm, 8px);
+  background: var(--color-base-01, #fff);
+
+  gap: 40px;
+
+  h3.stepNumber {
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    justify-content: center;
+    padding: 0 40px 0 0;
+    color: var(--color-title-step);
+    font-family: var(--font-family-price-02);
+    font-weight: bold;
+    line-height: normal;
+
+    .title {
+      font-size: rem(30);
+    }
+    .number {
+      font-size: rem(50);
+    }
+  }
+
+  .stepContent {
+    display: flex;
+    align-items: center;
+    flex-direction: row;
+    flex-grow: 1;
+    width: 100%;
+    max-width: 600px;
+    padding: 0;
+
+    gap: var(--row-gap);
+
+    img {
+      width: 160px;
+      height: 160px;
+      border: solid 1px var(--color-step-border);
+    }
+
+    @include g.mq_max(sm) {
+      flex-direction: column;
+      img {
+        width: 100%;
+        height: auto;
+      }
+    }
+
+    .stepBody {
+      display: flex;
+      align-items: flex-start;
+      flex-direction: column;
+      justify-content: center;
+      padding: 0;
+
+      gap: 10px;
+
+      H4 {
+        color: var(--color-text-main);
+        font-size: rem(30);
+      }
+      // p {
+      // 	color: var(--color-text-gray);
+      // 	//font-size: rem(16);
+      // }
+    }
+  }
+}

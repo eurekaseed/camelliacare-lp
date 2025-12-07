@@ -1,0 +1,38 @@
+@use "../global" as g;
+
+/*!
+foundation > reset
+ress.min.cssに不足のもの追加
+------------------------------
+*/
+
+// 横スクロール消す
+html {
+  overflow: auto;
+  height: 100%;
+}
+
+body {
+  overflow: hidden;
+  min-width: 100%;
+}
+
+nav ul li {
+  margin-left: 0;
+  padding: 0;
+  list-style: none !important;
+}
+nav ol,
+nav ul {
+  list-style: none;
+}
+
+a {
+  text-decoration: none;
+  color: inherit;
+}
+
+h2,
+h3 {
+  font-weight: normal;
+}

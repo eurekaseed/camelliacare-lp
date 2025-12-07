@@ -1,0 +1,143 @@
+@use "../global" as g;
+
+/*!
+animation > fade_in
+opacityで出現、フェード系
+------------------------------
+*/
+
+/* -------------------------------------
+scroll-fadeup：スクロールしたらフェイドアップ
+intersectionObserverAPIを使用
+--------------------------------------- */
+
+.scroll-fadeup {
+	transition: all 0.6s ease-in-out;
+	transform: translate(0px, 50px);
+	opacity: 0;
+}
+
+/* アニメーション後のスタイル */
+.scroll-fadeup.fadeUP {
+	transform: translate(0px, 0px);
+	opacity: 1;
+}
+
+/* -------------------------------------
+　ちりつきありフェード
+--------------------------------------- */
+
+.fade_in {
+	animation-name: fadeInAnim 1s forwards;
+	opacity: 0;
+
+	// animation-fill-mode: forwards;
+}
+
+@keyframes fadeInAnim {
+	from {
+		opacity: 0;
+	}
+
+	to {
+		opacity: 1;
+	}
+}
+
+/* 下から上へイン */
+/// 画面内に入ったらJSでクラスを付与することでアニメーションを実行する
+.fade_up {
+	animation: fadeUpAnim 0.5s forwards;
+	opacity: 0;
+
+	will-change: transform, opacity;
+}
+
+@keyframes fadeUpAnim {
+	from {
+		transform: translateY(300px);
+		opacity: 0;
+	}
+
+	to {
+		transform: translateY(0);
+		opacity: 1;
+	}
+}
+
+/* 上から下へへイン */
+
+.fade_down {
+	animation: fadeDownAnim 0.5s forwards;
+	opacity: 0;
+}
+
+@keyframes fadeDownAnim {
+	from {
+		transform: translateY(-100px);
+		opacity: 0;
+	}
+
+	to {
+		transform: translateY(0);
+		opacity: 1;
+	}
+}
+
+/* 左からイン */
+
+.fade_L_in {
+	animation: fadeLeftAnim 0.5s forwards;
+	opacity: 0;
+}
+
+@keyframes fadeLeftAnim {
+	from {
+		transform: translateX(-100px);
+		opacity: 0;
+	}
+
+	to {
+		transform: translateX(0);
+		opacity: 1;
+	}
+}
+
+/* 右からイン */
+
+.fade_R_in {
+	animation: fadeRightAnim 0.5s forwards;
+	opacity: 0;
+}
+
+@keyframes fadeRightAnim {
+	from {
+		transform: translateX(200px);
+		opacity: 0;
+	}
+
+	to {
+		transform: translateX(0);
+		opacity: 1;
+	}
+}
+
+// 順番フェードイン
+
+.dl.scroll_features {
+	opacity: 0;
+} /* スタート時は要素自体を透過0にするためのopacity:0;を指定する */
+
+/* スタートの順番の遅延時間CSS追加 */
+
+.scroll_features.delay0 {
+	animation-delay: 0.2s;
+}
+
+.scroll_features.delay1 {
+	animation-delay: 0.4s;
+}
+
+.scroll_features.delay2 {
+	animation-delay: 0.6s;
+}

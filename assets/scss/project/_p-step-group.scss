@@ -1,0 +1,51 @@
+@use "../global" as g;
+
+/*!
+project > p-step-group
+------------------------------
+お仕事開始までの流れ
+*/
+
+/*
+ピクセルからのフォントサイズ計算
+*/
+@use "sass:math";
+$baseFontSize: 16;
+
+@function rem($pixels) {
+	@return math.div($pixels, $baseFontSize) * 1rem;
+}
+// pxelsize => vw
+// font-size: vw(16, 1920);
+@function vw($pxelsize, $windowSize) {
+	@return math.div($pxelsize, $windowSize) * 100vw;
+}
+
+//////
+///
+
+.p-step-group {
+	display: flex;
+	align-items: center;
+	flex-direction: column;
+	width: 95%;
+
+	gap: 48px;
+
+	> *:not(:last-child) {
+		position: relative;
+
+		&::after {
+			position: absolute;
+			bottom: -24px; // borderと同じpxをｰする
+			left: 50%;
+			width: 0;
+			height: 0;
+			content: "";
+			transform: translateX(-50%);
+			border-top: 24px solid var(--color-title-step);
+			border-right: 24px solid transparent;
+			border-left: 24px solid transparent;
+		}
+	}
+}

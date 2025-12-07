@@ -1,0 +1,85 @@
+@use "../global" as g;
+
+/*!
+component > link
+------------------------------
+*/
+
+// ヘッダ固定でずれるページ内リンクのジャンプ先の位置を調整する
+.anchor {
+  // display: block;
+  padding-top: 80px;
+  margin-top: -80px;
+  @media screen and (min-width: 1000px) {
+    padding-top: 150px;
+    margin-top: -150px;
+  }
+}
+
+/* テキストリンク */
+a.textlink {
+  padding-right: 2.6rem;
+  display: inline-block;
+  text-decoration: underline;
+  margin-bottom: 1rem;
+}
+
+a.textlink {
+  background: url(../img/common/icon-pdf-hover.svg) right center no-repeat;
+  background-size: 1.6rem;
+}
+
+/* 「続きを読む」やブログタイトルなどの＞つきテキストリンク */
+.c-arrow-txtlink {
+  text-align: right;
+  @include g.mq_max() {
+    text-align: left;
+  }
+  padding-right: 15px;
+  position: relative;
+  color: var(--color-main);
+
+  &::after {
+    content: "";
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    right: 0; // [続きを読む]など短いリンクの為調整
+    margin: auto;
+    width: 10px;
+    height: 10px;
+    border-top: 2px solid var(--color-main);
+    border-right: 2px solid var(--color-main);
+    transform: rotate(45deg);
+  }
+}
+
+// ホバー
+a.textlink:hover,
+a.c-arrow-txtlink {
+  color: var(--color-btn-base);
+  &::after {
+    border-color: var(--color-btn-base);
+  }
+}
+
+/* リンク範囲をposition:relative;した親コンテナまで広げる */
+a.stretched-link::after {
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  z-index: 3;
+  pointer-events: auto;
+  content: "";
+  background-color: rgba(0, 0, 0, 0);
+}
+
+a.stretched-link:hover::after {
+  background-color: rgba(255, 255, 255, 0.2);
+}
+
+.position-static {
+  position: static !important;
+}

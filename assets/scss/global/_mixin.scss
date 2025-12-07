@@ -1,0 +1,47 @@
+// ひとつのmixinに mixin/1ファイルとするならファイル名に_mx-をつける
+// @mixin xxx() で設定、@include xxx() で呼び出し
+// 矢印
+// ex)
+// <li class="side-item">
+//     <a class="side-link">サイドメニュー</a>
+// </li>
+// .side-link{
+//     @include arrow(45deg, #000, 8px, 8px, 0, 8px, 0, auto);
+// }
+
+// ボタンなどの矢印: @mixin arrow
+// @include g.arrow;
+@mixin arrow($color: var(--baseFontColor), $rotate: 45deg, $w: 6px, $h: 6px, $left: 0, $right: auto) {
+    position: relative;
+
+    &::before {
+        content: "";
+        position: absolute;
+        top: 0;
+        bottom: 0;
+        margin: auto;
+        left: $left;
+        right: $right;
+        width: $w;
+        height: $h;
+        border-top: 2px solid $color;
+        border-right: 2px solid $color;
+        transform: rotate($rotate);
+    }
+}
+
+$IMG_PATH: "/img/";
+
+// background URL: @mixin bgurl
+// @include g.bgimg($fileName);
+@mixin bgurl($fileName) {
+    background: url($IMG_PATH + $fileName + ".png");
+    @content;
+}
+
+// img URL: @mixin imgurl
+// @include g.imgurl($fileName);
+@mixin imgurl($fileName) {
+    background: url($IMG_PATH + $fileName + ".png");
+    @content;
+}

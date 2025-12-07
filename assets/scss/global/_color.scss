@@ -1,0 +1,48 @@
+/*!
+global > color
+------------------------------
+*/
+
+/* SemanticColors */
+:root {
+	/* color */
+	--color-base-white: #fff;
+	--color-step-border: var(--colors-gray-500, #6b7280);
+	--color-title-icon: var(--color-camellia-orange-50, #ffb67d);
+	--color-primary-hover: var(--color-main-200, #e06c00);
+	--color-primary-link: #002e5b;
+	--color-secondary-hover: var(--color-gray100, #f0f0f0);
+	--color-btn-base: var(--color-main-100, #ff8526);
+	--color-btn-shadow: var(--color-main-50, #ffb67d);
+	--color-btn-shadow__inBG: var(--color-main-200, #e06c00);
+	--color-header-logo: var(--color-main-100, #ff8526);
+	--color-header-base: #fff;
+	--color-header-color: var(--color-gray900, #111827);
+	--color-header-logo: var(--color-main-100, #ff8526);
+	--color-footer-base: var(--color-base-pale-main, #ffe2cc);
+	--color-text-default: var(--color-gray900, #111827);
+	--color-text-gray: var(--color-gray500, #6b7280);
+	--color-text-main: var(--color-main-100, #ff8526);
+	--color-text-inBG: #fff;
+	--color-title-step: var(--color-main-200, #e06c00);
+	--base-grad-cta: linear-gradient(260deg, #ffbd54 0%, #ff8526 35.5%);
+}
+
+[data-theme="base-dark"] {
+	/* color */
+	--color-header-logo: var(--color-base-01, #ffffff);
+	--color-step-border: #ffffff;
+	--color-title-icon: #ffffff;
+	--color-primary-hover: var(--color-gray300, #d1d5db);
+	--color-primary-link: #ffffff;
+	--color-btn-base: var(--color-base-01, #ffffff);
+	--color-btn-btnbase-2: var(--color-base-01, #ffffff);
+	--color-btn-shadow: var(--color-main-200, #e06c00);
+	--color-btn-shoulder: var(--color-base-01, #ffffff);
+	--color-btn-txt: var(--color-main-100, #ff8526);
+	--color-header-base: #ffffff00;
+	--color-header-color: var(--color-base-01, #ffffff);
+	--color-header-logo: var(--color-base-01, #ffffff);
+	--color-text-default: var(--color-base-01, #ffffff);
+	--color-text-gray: var(--color-gray500, #6b7280);
+}

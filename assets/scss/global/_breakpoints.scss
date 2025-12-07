@@ -1,0 +1,46 @@
+@use "sass:map";
+
+// global > breakpoint
+// ------------------------------
+$breakpoints: (
+  "xs": 390px,
+  "sm": 600px,
+  "md": 800px,
+  "hdr": 1080px,
+  "hdr_max": 1079px,
+  "lg": 1140px,
+  "xl": 2800px,
+);
+
+@mixin mq($breakpoint: md) {
+	@media screen and (min-width: #{map-get($breakpoints, $breakpoint)}) {
+		@content;
+	}
+}
+
+@mixin mq_max($breakpoint: md) {
+	@media screen and (max-width: #{map-get($breakpoints, $breakpoint)}) {
+		@content;
+	}
+}
+
+// hd:ヘッダーを1080px以上でSPナビ
+
+@mixin mq($breakpoint: hdr) {
+	@media screen and (min-width: #{map-get($breakpoints, $breakpoint)}) {
+		@content;
+	}
+}
+
+@mixin mq_max($breakpoint: hdr) {
+	@media screen and (max-width: #{map-get($breakpoints, $breakpoint)}) {
+		@content;
+	}
+}
+
+// lg(1080px)以上かつハイレゾ対応背景
+@mixin mqx2($breakpoint: lg) {
+	@media screen and (min-width: #{map-get($breakpoints, $breakpoint)}) and (min-resolution: 2dppx) {
+		@content;
+	}
+}

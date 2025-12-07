@@ -1,0 +1,110 @@
+@use "../global" as g;
+
+/*!
+project > p-sort-group
+------------------------------
+*/
+
+/*
+ピクセルからのフォントサイズ計算
+*/
+@use "sass:math";
+$baseFontSize: 16;
+
+@function rem($pixels) {
+	@return math.div($pixels, $baseFontSize) * 1rem;
+}
+// pxelsize => vw
+// font-size: vw(16, 1920);
+@function vw($pxelsize, $windowSize) {
+	@return math.div($pxelsize, $windowSize) * 100vw;
+}
+
+.p-sort-group {
+	display: flex;
+	align-items: center;
+	flex-wrap: wrap;
+	justify-content: center;
+	margin-bottom: var(--min-gap);
+
+	gap: var(--row-gap);
+
+	/* Filter Box
+    .p-filterBox */
+}
+
+/* Filter Box */
+.p-filterBox {
+	position: relative;
+	display: inline-flex;
+	align-items: center;
+	justify-content: space-between;
+	min-width: 200px;
+	margin-bottom: 1rem; /* ボックス間のスペース */
+	padding: 0.5rem 1rem;
+	cursor: pointer;
+	color: var(--color-text-gray);
+	border: 1px solid var(--color-text-gray);
+	border-radius: var(--radius-box-sm);
+	background-color: var(--color-base-white);
+	font-size: 0.9rem;
+	font-weight: 400;
+
+	.selected-option {
+		flex-grow: 1;
+		font-weight: 700;
+	}
+
+	// 矢印
+	.arrow {
+		width: 0.4rem;
+		height: 0.4rem;
+		transform: translateY(-50%) rotate(45deg);
+		border-right: 2px solid var(--color-text-gray);
+		border-bottom: 2px solid var(--color-text-gray);
+	}
+
+	// ドロップダウンメニュー
+	.dropdown {
+		position: absolute;
+		z-index: 1000;
+		top: 100%;
+		left: 0;
+		display: none;
+		width: 100%;
+		border: 1px solid var(--color-text-gray);
+		border-radius: var(--radius-box-xs);
+		background-color: var(--color-base-white);
+
+		.dropdown-item {
+			width: 100%;
+			padding: 0.5rem 1rem;
+			cursor: pointer;
+			// transition: background-color 0.3s;
+			text-align: left;
+			color: var(--color-text-gray);
+			border: none;
+			background-color: var(--color-base-white);
+
+			&:hover {
+				background-color: var(--color-secondary-hover);
+			}
+		}
+	}
+
+	&[role="combobox"] {
+		position: relative;
+	}
+
+	&[aria-expanded="true"] {
+		.arrow {
+			transform: translateY(-50%) rotate(225deg);
+		}
+	}
+
+	&.active {
+		.dropdown {
+			display: block;
+		}
+	}
+}

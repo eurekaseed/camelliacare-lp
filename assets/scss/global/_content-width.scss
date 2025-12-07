@@ -1,0 +1,19 @@
+/*!
+global > content-width
+containerのmax-width
+------------------------------
+*/
+
+:root {
+	--content-width-s: 920px;
+	--content-width: 1140px;
+	--column2-min-width: 310px;
+	// --l-inner-max-width: 1140px;
+	--siteWidth-max-width: 1920px;
+}
+
+// サイト最大幅
+.siteWidth {
+	max-width: var(--siteWidth-max-width, 1920px);
+	margin-right: auto;
+}

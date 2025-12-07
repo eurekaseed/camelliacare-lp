@@ -1,0 +1,11 @@
+@use "../global" as g;
+
+/*!
+component > c-slider
+------------------------------
+*/
+.c-slider {
+  .swiper-slide {
+    padding-top: 40px;
+  }
+}

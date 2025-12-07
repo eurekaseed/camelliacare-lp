@@ -1,0 +1,70 @@
+@use "../global" as g;
+
+/*!
+animation > scrolldown
+FV内のスクロールダウン:線が上から下に動く 
+------------------------------
+*/
+
+.wrap_scrolldown {
+	position: relative;
+}
+
+.scrolldown1 {
+	position: absolute;
+	bottom: 4vh;
+	left: 97%;
+	height: 50px;
+}
+
+/* Scrollテキスト */
+.scrolldown1 span {
+	/*描画位置*/
+	position: absolute;
+	top: -38px;
+	left: -22.5px;
+	text-align: center;
+	letter-spacing: 0.05em;
+	color: #fff;
+	font-family: Quicksand;
+	font-size: 0.7rem;
+
+	rotate: 90deg;
+	@media screen and (min-width: 900px) and (max-width: 1080px) {
+		color: var(--color-main);
+	}
+}
+
+/* 線の描写 */
+.scrolldown1::after {
+	/*描画位置*/
+	position: absolute;
+	top: -44px;
+	width: 1px;
+	height: 56px;
+	content: "";
+	animation: pathmove 1.4s ease-in-out infinite;
+	opacity: 0;
+	background: #fff;
+	@media screen and (min-width: 900px) and (max-width: 1080px) {
+		background: var(--color-main);
+	}
+}
+
+/* 線が上から下に動く */
+@keyframes pathmove {
+	0% {
+		top: 0;
+		height: 0;
+		opacity: 0;
+	}
+	30% {
+		height: 30px;
+		opacity: 1;
+	}
+	100% {
+		top: 50px;
+		height: 0;
+		opacity: 0;
+	}
+}

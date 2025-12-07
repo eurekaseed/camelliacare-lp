@@ -1,0 +1,37 @@
+@use "../global" as g;
+
+/*!
+project > p-voice-group
+------------------------------
+実際の登録者の声(voice)
+*/
+
+/*
+ピクセルからのフォントサイズ計算
+*/
+@use "sass:math";
+$baseFontSize: 16;
+
+@function rem($pixels) {
+  @return math.div($pixels, $baseFontSize) * 1rem;
+}
+// pxelsize => vw
+// font-size: vw(16, 1920);
+@function vw($pxelsize, $windowSize) {
+  @return math.div($pxelsize, $windowSize) * 100vw;
+}
+
+.p-voice-group {
+  display: flex;
+  gap: var(--row-gap);
+  margin-bottom: var(--min-gap);
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: flex-start;
+
+  @include g.mq_max(hdr_max) {
+    flex-direction: column;
+    align-items: center;
+    gap: var(--gap-sp);
+  }
+}

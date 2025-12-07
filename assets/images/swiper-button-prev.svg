@@ -1,0 +1,7 @@
+<svg id="swiper-button-prev" xmlns="http://www.w3.org/2000/svg" width="64" height="64" viewBox="0 0 64 64">
+  <g id="楕円形_4714" data-name="楕円形 4714" fill="#fff" stroke="#aeb6c7" stroke-width="1">
+    <circle cx="32" cy="32" r="32" stroke="none"/>
+    <circle cx="32" cy="32" r="31.5" fill="none"/>
+  </g>
+  <path id="Icon_ionic-ios-arrow-round-forward" data-name="Icon ionic-ios-arrow-round-forward" d="M15.121,11.5a.869.869,0,0,1,.007,1.246L10.9,16.869H26.979a.88.88,0,1,1,0,1.76H10.911l4.224,4.123A.875.875,0,0,1,15.128,24a.916.916,0,0,1-1.271-.007L8.132,18.372h0a.987.987,0,0,1-.188-.278.822.822,0,0,1-.069-.339.871.871,0,0,1,.257-.616l5.724-5.619A.9.9,0,0,1,15.121,11.5Z" transform="translate(14.125 14.748)" fill="#2d2d2d"/>
+</svg>
